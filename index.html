@@ -156,7 +156,11 @@ nav a:hover { color: var(--text); border-color: var(--text3); text-decoration: n
 }
 
 /* ── セクション共通 ── */
-section { margin-bottom: 3rem; }
+section { margin-bottom: 3rem; scroll-margin-top: 120px; }
+
+@media (max-width: 640px) {
+  section { scroll-margin-top: 180px; }
+}
 .section-title {
   font-family: 'Noto Serif JP', serif;
   font-size: 19px;
