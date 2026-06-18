@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MBS報道問題に抗議する市民の記録</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -86,73 +89,140 @@ a:hover { text-decoration: underline; }
 header {
   background: var(--bg);
   border-bottom: 0.5px solid var(--border);
-  padding: 1.5rem 0;
-  margin-bottom: 2rem;
+  padding: 2rem 0 1.5rem;
+  margin-bottom: 2.5rem;
   position: sticky;
   top: 0;
   z-index: 100;
 }
-header .inner { max-width: 900px; margin: 0 auto; padding: 0 1.25rem; }
-.site-title { font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-.site-sub { font-size: 13px; color: var(--text2); margin-bottom: 0.75rem; }
-nav { display: flex; gap: 1.25rem; }
-nav a {
-  font-size: 14px;
-  color: var(--text2);
-  padding-bottom: 2px;
-  border-bottom: 1.5px solid transparent;
+header .inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
-nav a:hover { color: var(--text); border-color: var(--border2); text-decoration: none; }
+header .titleblock {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+header .mark {
+  width: 1px;
+  height: 34px;
+  background: var(--text);
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+.site-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  line-height: 1.5;
+}
+.site-sub {
+  font-size: 12px;
+  color: var(--text3);
+  letter-spacing: 0.02em;
+  margin-top: 3px;
+}
+nav { display: flex; gap: 1.75rem; padding-bottom: 2px; }
+nav a {
+  font-size: 13px;
+  color: var(--text2);
+  letter-spacing: 0.02em;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+nav a:hover { color: var(--text); border-color: var(--text3); text-decoration: none; }
+
+@media (max-width: 560px) {
+  header .inner { align-items: flex-start; }
+  nav { gap: 1.1rem; padding-bottom: 0; flex-wrap: wrap; }
+}
 
 /* ── セクション共通 ── */
 section { margin-bottom: 3rem; }
 .section-title {
-  font-size: 18px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px;
   font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--text);
   padding-bottom: 0.5rem;
   border-bottom: 0.5px solid var(--border);
   margin-bottom: 1.25rem;
 }
 
-/* ── 問題セクション ── */
-.issue-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+/* ── 問題セクション：章番号付き社説調 ── */
+.issue-list { display: flex; flex-direction: column; gap: 0; }
 .issue-card {
-  background: var(--bg);
-  border: 0.5px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.25rem;
+  padding: 1.75rem 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.issue-card:first-child { padding-top: 0.5rem; }
+.issue-card:last-child { border-bottom: none; }
+.issue-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  font-weight: 200;
+  color: var(--text3);
+  line-height: 1;
+  padding-top: 2px;
 }
 .issue-tag {
   display: inline-block;
   font-size: 11px;
   font-weight: 500;
-  background: var(--info-bg);
+  letter-spacing: 0.03em;
   color: var(--info-text);
-  border-radius: 6px;
-  padding: 3px 10px;
-  margin-bottom: 8px;
+  border-bottom: 1px solid var(--info-text);
+  padding-bottom: 2px;
+  margin-bottom: 10px;
 }
 .issue-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 0.5rem; }
-.issue-card p { font-size: 14px; color: var(--text2); line-height: 1.7; }
+.issue-card p { font-size: 14px; color: var(--text2); line-height: 1.8; }
+.issue-card p + h3 { margin-top: 1rem; }
 .note { font-size: 12px; color: var(--text3); margin-top: 0.5rem; font-style: italic; }
 
+@media (max-width: 480px) {
+  .issue-card { grid-template-columns: 36px 1fr; gap: 0.85rem; }
+  .issue-num { font-size: 24px; }
+}
+
 /* ── カレンダーセクション ── */
-.cal-meta { font-size: 13px; color: var(--text2); margin-bottom: 1rem; }
+.cal-meta { font-size: 13px; color: var(--text2); margin-bottom: 0.6rem; }
 .legend { display: flex; gap: 16px; margin-bottom: 1.25rem; flex-wrap: wrap; }
 .leg-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text2); }
 .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .dot-fri { background: #7F77DD; }
 .dot-day { background: #378ADD; }
 
-.months { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; }
+.months { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; margin-top: 1.5rem; }
 .month-card {
   background: var(--bg);
   border: 0.5px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 4px;
+  padding: 14px 16px 16px;
+  border-top: 2px solid var(--text);
 }
-.month-title { font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+.month-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+  color: var(--text);
+}
 .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
 .dow-label {
   font-size: 10px;
@@ -165,7 +235,7 @@ section { margin-bottom: 3rem; }
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 3px;
   font-size: 12px;
   cursor: default;
   color: var(--text3);
@@ -190,6 +260,31 @@ footer {
   color: var(--text3);
   text-align: center;
 }
+
+/* ── 資料セクション：引用・出典調 ── */
+.resource-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.resource-card {
+  border-left: 2px solid var(--border2);
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  transition: border-color 0.15s;
+}
+.resource-card:hover { border-color: var(--blue-text); }
+.resource-card p {
+  font-size: 13px;
+  color: var(--text2);
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+.resource-card a {
+  display: inline-block;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.6;
+  word-break: break-word;
+}
+.resource-card a:hover { color: var(--blue-text); }
 </style>
 </head>
 <body>
@@ -200,11 +295,17 @@ footer {
 
 <header>
   <div class="inner">
-    <div class="site-title">MBS報道問題に抗議する市民の記録</div>
-    <div class="site-sub">毎日放送（MBS）の報道姿勢への抗議活動・市民記録サイト</div>
+    <div class="titleblock">
+      <div class="mark"></div>
+      <div>
+        <div class="site-title">MBS報道問題に抗議する市民の記録</div>
+        <div class="site-sub">毎日放送（MBS）の報道姿勢への抗議活動・市民記録サイト</div>
+      </div>
+    </div>
     <nav>
       <a href="#issues">報道問題について</a>
       <a href="#calendar">抗議活動の記録</a>
+      <a href="#resources">関連資料</a>
     </nav>
   </div>
 </header>
@@ -214,25 +315,34 @@ footer {
   <!-- ── 報道問題セクション ── -->
   <section id="issues">
     <h2 class="section-title">MBS報道問題について</h2>
-    <div class="issue-grid">
+    <div class="issue-list">
       <div class="issue-card">
-        <div class="issue-tag">MBS 2月13日報道について</div>
-        <p>MBSは、二名の市民が暴行を行ったとする報道を行いました。</p>
-        <p>しかしそれは事実に基づかない情報で、MBSはその後二度の訂正放送を行いました。</p>
-        <p>私たちは、この報道について依然として十分な検証と説明が行われていないと考えています。</p>
+        <div class="issue-num">01</div>
+        <div>
+          <div class="issue-tag">MBS 2月13日報道について</div>
+          <p>MBSは、二名の市民が暴行を行ったとする報道を行いました。</p>
+          <p>しかしそれは事実に基づかない情報で、MBSはその後二度の訂正放送を行いました。</p>
+          <p>私たちは、この報道について依然として十分な検証と説明が行われていないと考えています。</p>
+        </div>
       </div>
       <div class="issue-card">
-        <div class="issue-tag">私たちが問題と考えること</div>
-        <h3>① 事実と異なる報道が行われたこと</h3>
-        <p>MBSは訂正放送を行い、当初の報道内容に誤りがあったことを認めました。しかし事実に基づかない情報をニュースにしたことの原因や経緯は明らかにされませんでした。</p>
-        <h3 style="margin-top:0.75rem">② 市民に被害が生じたこと</h3>
-        <p>加害者と報じられた市民に対し、多数の誹謗中傷が発生し、その影響は現在も続いています。</p>
+        <div class="issue-num">02</div>
+        <div>
+          <div class="issue-tag">私たちが問題と考えること</div>
+          <h3>① 事実と異なる報道が行われたこと</h3>
+          <p>MBSは訂正放送を行い、当初の報道内容に誤りがあったことを認めました。しかし事実に基づかない情報をニュースにしたことの原因や経緯は明らかにされませんでした。</p>
+          <h3 style="margin-top:0.75rem">② 市民に被害が生じたこと</h3>
+          <p>加害者と報じられた市民に対し、多数の誹謗中傷が発生し、その影響は現在も続いています。</p>
+        </div>
       </div>
       <div class="issue-card">
-        <div class="issue-tag">私たちが求めること</div>
-        <p>① 報道に至った経緯の検証と公表</p>
-        <p>② 具体的な再発防止策の提示</p>
-        <p>③ 報じられた方々への適切な対応と名誉回復</p>
+        <div class="issue-num">03</div>
+        <div>
+          <div class="issue-tag">私たちが求めること</div>
+          <h3>① 報道に至った経緯の検証と公表</h3>
+          <h3>② 具体的な再発防止策の提示</h3>
+          <h3>③ 報じられた方々への適切な対応と名誉回復</h3>
+        </div>
       </div>
     </div>
   </section>
@@ -240,13 +350,45 @@ footer {
   <!-- ── カレンダーセクション ── -->
   <section id="calendar">
     <h2 class="section-title">抗議活動の記録</h2>
-    <p class="cal-meta">2026年2月14日〜 ／ 昼：毎日、夜：金曜のみ ／ 日付をクリックするとX（Twitter）検索へ<br>
-    検索結果が表示されない場合は、画面上部の「最新」タブに切り替えてご覧ください。</p>
+    <p class="cal-meta">2月13日以降、いまだMBS前では有志の市民による抗議が続けられています。ぜひご確認ください。</p>
+    <p class="cal-meta">日付をクリックするとX（Twitter）が表示されます。検索結果がおかしいときは、「最新」タブに切り替えてご覧ください。</p>
+    <p class="cal-meta">金曜日には夜の定例抗議もあります。</p>
     <div class="legend">
-      <div class="leg-item"><div class="dot dot-fri"></div>金曜日（昼＋夜 OR検索）</div>
-      <div class="leg-item"><div class="dot dot-day"></div>その他の日（昼のみ）</div>
     </div>
     <div class="months" id="months"></div>
+  </section>
+
+  <!-- ── 資料セクション ── -->
+  <section id="resources">
+    <h2 class="section-title">MBS報道問題に関する資料</h2>
+    <div class="resource-list">
+
+      <div class="resource-card">
+        <p>元MBSアナウンサー子守康範さんによる解説文章。簡潔かつ詳細にまとめられています。</p>
+        <a href="https://note.com/10komori/n/n323d75de18ce" target="_blank" rel="noopener">MBSによるしばき隊暴行事件報道と訂正について｜子守康範</a>
+      </div>
+
+      <div class="resource-card">
+        <p>NoHateTVから切り抜き動画。発生から2週間ほどの間に起こった誤報による影響、反応について語られています。</p>
+        <a href="https://www.youtube.com/watch?v=gVjY0Zm4RYg" target="_blank" rel="noopener">20260219&20260226/NO HATE TV/MBSしばき隊虚報事件&続報</a>
+      </div>
+
+      <div class="resource-card">
+        <p>菅野完さんの切り抜き動画。謝罪・責任を取るということの方法論を解説しています。個人的には今回の問題にあまり興味のない方でも必見の内容だと思います。</p>
+        <a href="https://www.youtube.com/watch?app=desktop&v=HiLfhWRjq-Q&feature=youtu.be" target="_blank" rel="noopener">【菅野完】MBSはもはや存立の危機。放送法を無視した「報道情報局」という異常な部署が"やらせ"を生み出すカラクリ【菅野完 政治解説切り抜き】</a>
+      </div>
+
+      <div class="resource-card">
+        <p>MBSへの抗議行動の動画も数多くあるのですが、まずは水谷伸之さんの動画をおすすめします。</p>
+        <a href="https://www.youtube.com/watch?v=pgl538D9gdk" target="_blank" rel="noopener">【MBSしばき隊誤報道】抗議行動スピーチ 2026年3月22日 #難波文男 #子守康範</a>
+      </div>
+
+      <div class="resource-card">
+        <p>実際に流された誤報がどのようなものであったのか、動画は削除されているので見ることは難しいのですが、てんさんのブログ記事の下の方、「消されたTV放送動画…」セクションから静止画で見ることができます。</p>
+        <a href="https://ameblo.jp/et-eo/entry-12958917283.html" target="_blank" rel="noopener">【社長さんよろしく！MBSコンプラ】うそをついたりだましたりしていないか／他人を傷つけていないか | ☆Dancing the Dream ☆</a>
+      </div>
+
+    </div>
   </section>
 
 </div>
