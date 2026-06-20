@@ -151,16 +151,17 @@ nav a {
 nav a:hover { color: var(--text); border-color: var(--text3); text-decoration: none; }
 
 @media (max-width: 560px) {
-  header .inner { align-items: flex-start; }
-  nav { gap: 1.1rem; padding-bottom: 0; flex-wrap: wrap; }
+  header { padding: 1.1rem 0 0.9rem; margin-bottom: 1.5rem; }
+  header .inner { align-items: flex-start; gap: 1rem; }
+  header .mark { height: 26px; }
+  .site-title { font-size: 16px; }
+  .site-sub { font-size: 11px; margin-top: 2px; }
+  nav { gap: 0.9rem; padding-bottom: 0; flex-wrap: wrap; }
+  nav a { font-size: 12px; }
 }
 
 /* ── セクション共通 ── */
-section { margin-bottom: 3rem; scroll-margin-top: 120px; }
-
-@media (max-width: 640px) {
-  section { scroll-margin-top: 180px; }
-}
+section { margin-bottom: 3rem; }
 .section-title {
   font-family: 'Noto Serif JP', serif;
   font-size: 19px;
@@ -209,6 +210,50 @@ section { margin-bottom: 3rem; scroll-margin-top: 120px; }
 @media (max-width: 480px) {
   .issue-card { grid-template-columns: 36px 1fr; gap: 0.85rem; }
   .issue-num { font-size: 24px; }
+}
+
+/* ── 市民活動についてセクション：エッセイ調 ── */
+.essay-block {
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  padding: 2.25rem 2rem 2rem;
+  position: relative;
+}
+.essay-quote-mark {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 56px;
+  font-weight: 200;
+  color: var(--border2);
+  line-height: 1;
+  position: absolute;
+  top: 0.5rem;
+  left: 1.25rem;
+  user-select: none;
+}
+.essay-body {
+  position: relative;
+  margin-left: 0.25rem;
+}
+.essay-body p {
+  font-size: 14.5px;
+  color: var(--text2);
+  line-height: 2;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.01em;
+}
+.essay-body p:last-child { margin-bottom: 0; }
+.essay-body p:first-of-type {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+@media (max-width: 480px) {
+  .essay-block { padding: 2.25rem 1.25rem 1.5rem; }
+  .essay-quote-mark { font-size: 44px; left: 0.85rem; }
 }
 
 /* ── カレンダーセクション ── */
@@ -316,6 +361,7 @@ footer {
     </div>
     <nav>
       <a href="#issues">報道問題について</a>
+      <a href="#about-activism">市民活動について</a>
       <a href="#calendar">抗議活動の記録</a>
       <a href="#resources">関連資料</a>
     </nav>
@@ -355,6 +401,22 @@ footer {
           <h3>② 具体的な再発防止策の提示</h3>
           <h3>③ 報じられた方々への適切な対応と名誉回復</h3>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 市民活動についてセクション ── -->
+  <section id="about-activism">
+    <h2 class="section-title">市民活動について</h2>
+    <div class="essay-block">
+      <div class="essay-quote-mark">"</div>
+      <div class="essay-body">
+        <p>街中やニュースで、プラカードを掲げて声を上げる人々や「しばき隊」という名称に、「怖い」という印象を持つ方もいるかもしれません。</p>
+        <p>まず「しばき隊」は、差別問題へのカウンター活動に特化した市民グループの一つであり、市民活動全体を一括りにして「市民活動」＝「しばき隊」＝「暴力的」と見なすのは偏った見方です。</p>
+        <p>活動の中では激しい言葉が飛ぶこともありますが、注意すべきは「差別発言」と「罵倒」の違いです。生まれや属性など本人の力で変えられない要素を否定する差別発言は、決して許されません。一方「罵倒」は、理不尽な権力や差別に対する抗議の言葉として使われてきた歴史があります。そして、しばき隊を含む市民運動は、いかなる場合も暴力を用いません。言葉と存在によって、社会に異議を申し立てているのです。</p>
+        <p>民主主義とは選挙だけではなく、不正義に黙らず、権力の暴走に異議を唱え、弱い立場の人のために声を上げることでもあります。過去にも、当時「迷惑」とされた声が社会を前進させてきました。声を上げる人がいなくなった社会は、静かなのではなく、沈黙させられた社会です。</p>
+        <p>理不尽に対して「おかしい」と言える人々が存在し続けることこそ、民主主義国家の証です。声を上げることはリスクを伴いますが、市民の義務でもあります。</p>
+        <p>一人ひとりの声は小さくとも、それが集まれば大きな力を動かしてきました。市民活動を公平な視線で見ていただき、機会があればぜひ参加してみてください。</p>
       </div>
     </div>
   </section>
@@ -408,6 +470,31 @@ footer {
 <footer>
   <p>このサイトは市民有志による自主的な記録です。</p>
 </footer>
+
+<script>
+/* ヘッダーの実際の高さを測り、各セクションのscroll-margin-topに反映する。
+   フォントサイズやnavの折り返し行数で高さが変わるため、固定値ではなく実測で対応する。 */
+(function () {
+  const header = document.querySelector('header');
+  const sections = document.querySelectorAll('section');
+  const EXTRA = 16; /* ヘッダー直下に少し余白を持たせる */
+
+  function applyOffset() {
+    const h = header.getBoundingClientRect().height + EXTRA;
+    sections.forEach(function (s) {
+      s.style.scrollMarginTop = h + 'px';
+    });
+  }
+
+  applyOffset();
+  window.addEventListener('resize', applyOffset);
+  window.addEventListener('orientationchange', applyOffset);
+  /* フォント読み込み完了後に高さが変わる場合があるため再計測 */
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(applyOffset);
+  }
+})();
+</script>
 
 <script>
 (function() {
