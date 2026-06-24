@@ -462,6 +462,21 @@ footer {
         <a href="https://ameblo.jp/et-eo/entry-12958917283.html" target="_blank" rel="noopener">【社長さんよろしく！MBSコンプラ】うそをついたりだましたりしていないか／他人を傷つけていないか | ☆Dancing the Dream ☆</a>
       </div>
 
+      <div class="resource-card">
+        <p>2月13日報道後、MBSによって無申告で行われた記事の修正の履歴が残っています。強い表現から逃げの効く形になっていきます。</p>
+        <a href="https://megalodon.jp/?url=https%3A%2F%2Fwww.mbs.jp%3A443%2Fnews%2Fkansainews%2F20260213%2FGE00071480.shtml&all=1" target="_blank" rel="noopener">魚拓リスト（https://www.mbs.jp:443/news/kansainews/20260213/GE00071480.shtml）</a>
+      </div>
+
+      <div class="resource-card">
+        <p>3月19日、1度目の訂正報道の内容です。てんさんのブログから。</p>
+        <a href="https://ameblo.jp/et-eo/entry-12960235966.html" target="_blank" rel="noopener">【MBS誤報 訂正お詫びしたフリ】⚠️誤報に誤報を重ね人権侵害を深めるMBS | ☆Dancing the Dream ☆</a>
+      </div>
+
+      <div class="resource-card">
+        <p>3月26日、2度目の訂正内容の報道です。てんさんのブログから。</p>
+        <a href="https://ameblo.jp/et-eo/entry-12961038966.html" target="_blank" rel="noopener">【MBS人権侵害誤報：２度目の訂正お詫び】大阪地検2人を不起訴…当たり前！報道被害者に謝罪なし | ☆Dancing the Dream ☆</a>
+      </div>
+
     </div>
   </section>
 
@@ -505,11 +520,26 @@ footer {
 
   const youbi = ['日','月','火','水','木','金','土'];
 
-  function orUrl(mmdd, isFri) {
+  function fmtDate(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + dd;
+  }
+
+  function orUrl(mmdd, isFri, dateObj) {
+    const next = new Date(dateObj);
+    next.setDate(next.getDate() + 1);
+    const since = fmtDate(dateObj) + '_00:00:00_JST';
+    const until = fmtDate(next) + '_00:00:00_JST';
+
     const t1 = '#' + mmdd + 'MBSプロテスト';
-    if (!isFri) return 'https://x.com/search?q=' + encodeURIComponent(t1) + '&f=live';
-    const t2 = '#' + mmdd + 'MBS夜プロテスト';
-    return 'https://x.com/search?q=' + encodeURIComponent(t1 + ' OR ' + t2) + '&f=live';
+    const tagPart = isFri
+      ? '(' + t1 + ' OR #' + mmdd + 'MBS夜プロテスト)'
+      : '(' + t1 + ')';
+
+    const q = tagPart + ' OR (MBS (プロテスト OR 抗議)) since:' + since + ' until:' + until;
+    return 'https://x.com/search?q=' + encodeURIComponent(q) + '&f=live';
   }
 
   const months = [];
@@ -564,10 +594,10 @@ footer {
         const isFri = d.getDay() === 5;
         cell.className = 'day-cell active ' + (isFri ? 'is-fri' : 'is-day');
         cell.textContent = day;
-        const url = orUrl(mmdd, isFri);
+        const url = orUrl(mmdd, isFri, d);
         cell.title = isFri
-          ? (month+1) + '/' + day + '（金）昼＋夜 OR検索'
-          : (month+1) + '/' + day + ' 昼タグ検索';
+          ? (month+1) + '/' + day + '（金）昼＋夜＋関連語 検索'
+          : (month+1) + '/' + day + ' タグ＋関連語 検索';
         cell.addEventListener('click', function() { window.open(url, '_blank'); });
       } else {
         cell.className = 'day-cell';
