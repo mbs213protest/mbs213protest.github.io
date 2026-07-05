@@ -318,6 +318,59 @@ footer {
   text-align: center;
 }
 
+/* ── BPOセクション：行動促進 ── */
+.bpo-block {
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 2rem 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.bpo-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--text);
+  opacity: 0.5;
+}
+.bpo-lead {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  padding-left: 0.25rem;
+}
+.bpo-body p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.9;
+  margin-bottom: 0.85rem;
+  padding-left: 0.25rem;
+}
+.bpo-body p:last-of-type { margin-bottom: 1.25rem; }
+.bpo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.25rem;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--blue-text);
+  border-bottom: 1px solid var(--blue-text);
+  padding-bottom: 2px;
+  word-break: break-all;
+}
+.bpo-cta:hover { opacity: 0.75; text-decoration: none; }
+
+@media (max-width: 480px) {
+  .bpo-block { padding: 1.5rem 1.25rem 1.25rem; }
+  .bpo-lead { font-size: 15px; }
+}
+
 /* ── 資料セクション：引用・出典調 ── */
 .resource-list { display: flex; flex-direction: column; gap: 1.5rem; }
 .resource-card {
@@ -364,6 +417,7 @@ footer {
       <a href="#about-activism">市民活動について</a>
       <a href="#calendar">抗議活動の記録</a>
       <a href="#resources">関連資料</a>
+      <a href="#bpo">BPOに声を届ける</a>
     </nav>
   </div>
 </header>
@@ -480,7 +534,19 @@ footer {
     </div>
   </section>
 
-</div>
+  <!-- ── BPOセクション ── -->
+  <section id="bpo">
+    <h2 class="section-title">メディアの不公正に、意見を届けよう</h2>
+    <div class="bpo-block">
+      <div class="bpo-lead">あなたの一言が、不公正を正し、メディアの姿勢を変える確かな第一歩になります。</div>
+      <div class="bpo-body">
+        <p>7/5現在、MBSによる誤報問題に対して、2度の訂正報道と検証番組の放映が行われました。これは、連日現場へ赴き抗議を続けた市民のみなさんの粘り強い運動の成果であると同時に、報道局に強い影響力を持つ「BPO（放送倫理・番組向上機構）」へ、多くの人々が意見を送り続けた結果でもあります。</p>
+        <p>BPOは、放送の自由を守るために設立された自主的な第三者機関です。その意見窓口は常に開かれており、誰でも自由に、メディアに対する意見を提出することができます。</p>
+        <p>社会に潜む不公正の影には、メディアの偏った報道が絡んでいることも少なくありません。嘘の報道や行き過ぎた人権侵害を「どうせ変わらない」と諦める必要はありません。BPOにあなたの声を届けてみませんか。</p>
+      </div>
+      <a class="bpo-cta" href="https://www.bpo.gr.jp/?page_id=967" target="_blank" rel="noopener">→ BPO 意見・苦情の申し立て窓口</a>
+    </div>
+  </section>
 
 <footer>
   <p>このサイトは市民有志による自主的な記録です。</p>
