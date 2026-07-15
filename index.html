@@ -318,13 +318,163 @@ footer {
   text-align: center;
 }
 
-/* ── BPOセクション：行動促進 ── */
+/* ── MBSペディアセクション：記録文書調 ── */
+.mbspedia-body { display: flex; flex-direction: column; gap: 1rem; }
+.mbspedia-chapter {
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  border-top: 2px solid var(--text3);
+  padding: 1.25rem 1.5rem 1.25rem;
+}
+.mbspedia-chapter-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+.mbspedia-chapter h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0;
+}
+.mbspedia-date-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text3);
+  background: var(--bg2);
+  border-radius: 3px;
+  padding: 2px 7px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.mbspedia-chapter p {
+  font-size: 13.5px;
+  color: var(--text2);
+  line-height: 1.95;
+  margin-bottom: 0.6rem;
+}
+.mbspedia-chapter p:last-child { margin-bottom: 0; }
+.mbspedia-chapter sup a {
+  font-size: 10px;
+  color: var(--blue-text);
+  text-decoration: none;
+  vertical-align: super;
+  padding: 0 1px;
+}
+.mbspedia-chapter sup a:hover { text-decoration: underline; }
+
+/* 出典コーナー */
+.mbspedia-refs {
+  background: var(--bg2);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin-top: 0.5rem;
+}
+.mbspedia-refs h4 {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.mbspedia-refs ol {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.mbspedia-refs li {
+  font-size: 12px;
+  color: var(--text2);
+  display: flex;
+  gap: 0.5rem;
+  line-height: 1.6;
+}
+.mbspedia-refs li .ref-num {
+  color: var(--text3);
+  flex-shrink: 0;
+  min-width: 1.5rem;
+  font-weight: 500;
+}
+.mbspedia-refs li a {
+  color: var(--blue-text);
+  word-break: break-all;
+  font-size: 12px;
+}
+
+/* ── 関連資料セクション：番号バッジ付きインデックス調 ── */
+.resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.resource-card {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0;
+  border-bottom: 0.5px solid var(--border);
+  transition: background 0.12s;
+}
+.resource-card:last-child { border-bottom: none; }
+.resource-card:hover { background: var(--bg2); }
+.resource-badge {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1.1rem;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text3);
+  border-right: 0.5px solid var(--border);
+}
+.resource-content {
+  padding: 0.9rem 1.1rem;
+}
+.resource-card p {
+  font-size: 13px;
+  color: var(--text2);
+  margin-bottom: 0.4rem;
+  line-height: 1.7;
+}
+.resource-card a {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.6;
+  word-break: break-word;
+}
+.resource-card a:hover { color: var(--blue-text); text-decoration: none; }
+
+/* ── BPOセクション：行動促進・アクセントカラー ── */
+#bpo { position: relative; }
+#bpo .section-title {
+  color: var(--blue-text);
+  border-bottom-color: var(--blue-text);
+  opacity: 0.9;
+}
 .bpo-block {
-  border: 1px solid var(--border2);
+  background: var(--info-bg);
+  border: 1px solid rgba(24, 95, 165, 0.25);
   border-radius: 4px;
   padding: 2rem 2rem 1.75rem;
   position: relative;
   overflow: hidden;
+}
+@media (prefers-color-scheme: dark) {
+  .bpo-block { background: rgba(12, 68, 124, 0.35); border-color: rgba(181, 212, 244, 0.2); }
 }
 .bpo-block::before {
   content: '';
@@ -332,8 +482,8 @@ footer {
   top: 0; left: 0;
   width: 4px;
   height: 100%;
-  background: var(--text);
-  opacity: 0.5;
+  background: var(--blue-text);
+  opacity: 0.7;
 }
 .bpo-lead {
   font-family: 'Noto Serif JP', serif;
@@ -360,41 +510,21 @@ footer {
   font-size: 14px;
   font-weight: 500;
   color: var(--blue-text);
-  border-bottom: 1px solid var(--blue-text);
-  padding-bottom: 2px;
+  background: var(--bg);
+  border: 1px solid var(--blue-text);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
   word-break: break-all;
+  transition: background 0.15s, color 0.15s;
 }
-.bpo-cta:hover { opacity: 0.75; text-decoration: none; }
+.bpo-cta:hover { background: var(--blue-text); color: var(--bg); text-decoration: none; opacity: 1; }
 
 @media (max-width: 480px) {
   .bpo-block { padding: 1.5rem 1.25rem 1.25rem; }
   .bpo-lead { font-size: 15px; }
+  .resource-card { grid-template-columns: 28px 1fr; }
+  .resource-badge { font-size: 11px; padding-top: 1rem; }
 }
-
-/* ── 資料セクション：引用・出典調 ── */
-.resource-list { display: flex; flex-direction: column; gap: 1.5rem; }
-.resource-card {
-  border-left: 2px solid var(--border2);
-  padding: 0.1rem 0 0.1rem 1.1rem;
-  transition: border-color 0.15s;
-}
-.resource-card:hover { border-color: var(--blue-text); }
-.resource-card p {
-  font-size: 13px;
-  color: var(--text2);
-  margin-bottom: 0.5rem;
-  line-height: 1.75;
-}
-.resource-card a {
-  display: inline-block;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.6;
-  word-break: break-word;
-}
-.resource-card a:hover { color: var(--blue-text); }
 </style>
 </head>
 <body>
@@ -416,6 +546,7 @@ footer {
       <a href="#issues">報道問題について</a>
       <a href="#about-activism">市民活動について</a>
       <a href="#calendar">抗議活動の記録</a>
+      <a href="#mbspedia">MBSペディア</a>
       <a href="#resources">関連資料</a>
       <a href="#bpo">BPOに声を届ける</a>
     </nav>
@@ -486,49 +617,132 @@ footer {
     <div class="months" id="months"></div>
   </section>
 
+  <!-- ── MBSペディアセクション ── -->
+  <section id="mbspedia">
+    <h2 class="section-title">MBSペディア</h2>
+    <div class="mbspedia-body">
+
+      <div class="mbspedia-chapter">
+        <div class="mbspedia-chapter-header"><h3>最初の報道（2026年2月13日）</h3></div>
+        <p>2026年2月13日、MBSはテレビのニュース番組で、独自取材に基づく傷害事件を報じた<sup><a href="#mbspedia-ref-1">[1]</a></sup>。</p>
+        <p>同局の報道によれば、2025年7月、大阪市内で開催されていた参政党のイベント会場近くを、同党のイメージカラーと同じ橙色の帽子をかぶって歩いていた人物が、同党の支持者だと誤認され、抗議活動をしていた2名から押し倒されるなどの暴行を受け、肋骨を2本折る重傷を負ったとされた。MBSはこの暴行をしたとする2名の人物について、「『しばき隊』を名乗る男性たち」と報じた<sup><a href="#mbspedia-ref-1">[1]</a></sup>。</p>
+        <p>被害者とされる人物は取材に対し、自身が同党の党員でもセミナーの参加者でもなかったとした上で、これまでに経験したことのない絡まれ方であったと振り返った。彼は被害届を提出し、大阪府警が傷害事件として捜査しているとされた<sup><a href="#mbspedia-ref-1">[1]</a></sup>。</p>
+        <p>同局はこの報道の中で、加害者とされた2名の外見が一部判別できる映像を放送した<sup><a href="#mbspedia-ref-1">[1]</a></sup>。</p>
+        <p>この報道は、単なる個人間のトラブルとしてではなく、特定の団体を名乗る者が、特定の政党の支持者に対して暴力を振るったという構図を強調する内容として伝えられた<sup><a href="#mbspedia-ref-1">[1]</a></sup>。</p>
+      </div>
+
+      <div class="mbspedia-chapter">
+        <div class="mbspedia-chapter-header"><h3>最初の訂正・謝罪（2026年3月19日）</h3></div>
+        <p>2026年3月19日、MBSは2月13日に放送した前掲のニュースについて、事実誤認があったとして昼の番組内で訂正し、謝罪した<sup><a href="#mbspedia-ref-2">[2]</a></sup>。</p>
+        <p>同局は、暴行をしたとされる人物を「『しばき隊』を名乗る男性たち」と報じていたが、彼らが現場でそのように名乗った事実は確認されなかったとして、当該表現を撤回した。MBSは、被害届を提出した人物の認識、抗議活動をしていた人物の1人が当時SNS上で「ニューしばき隊」と称していたことを確認していたこと、捜査関係者への取材などを根拠として当該表現を用いたと説明した上で、これらの情報を統合し、彼らが現場で「しばき隊」と名乗ったと受け取れる報道をしたことは誤りであったと認めた<sup><a href="#mbspedia-ref-2">[2]</a></sup>。</p>
+        <p>この訂正報道は、加害者である人物たちが「しばき隊」もしくは「ニューしばき隊」という特定団体の構成員であるかどうかについてのみフォーカスされており、それ以外の内容は含まれなかった<sup><a href="#mbspedia-ref-2">[2]</a></sup>。</p>
+      </div>
+
+      <div class="mbspedia-chapter">
+        <div class="mbspedia-chapter-header"><h3>2回目の訂正・謝罪（2026年3月26日）</h3></div>
+        <p>2026年3月26日、MBSは同日昼のニュース番組において、書類送検されていた加害者と見られた人物2人を大阪地検が3月25日付で不起訴としたことを報じた。その際、同局は「2月13日にこのニュースを放送する段階で、今回不起訴となった男性2人から直接話を聞いていなかった」とした上で、「報道により男性2人が傷害事件の加害者であるかのような印象を与えたことをおわびします」と謝罪した<sup><a href="#mbspedia-ref-3">[3]</a></sup>。</p>
+        <p>同日、大阪市内で行われた同局の改編会見においても、田渕伸一総合編成局長がこの件について言及した。田渕局長は、当日の報道内容を説明した上で、「弊社の一社員、編成責任者として、結果的にこのようなことに至ったこと、特に男性2人にご迷惑をおかけしたことを深くおわび申し上げる次第でございます」と述べ、頭を下げた<sup><a href="#mbspedia-ref-3">[3]</a></sup>。</p>
+        <p>同局の広報担当者は、この時点で「今、まさにいろんなことを調査している最中」であるとした上で、「事実として分かったことと、訂正、おわびすることに対しては、先週と本日の2回に渡っておわびをさせていただきました。2人の男性に関しましては、引き続き真摯に対応していこうと思っています」と説明した<sup><a href="#mbspedia-ref-3">[3]</a></sup>。</p>
+      </div>
+
+      <div class="mbspedia-chapter">
+        <div class="mbspedia-chapter-header"><h3>加害者とされた2人への誹謗中傷</h3></div>
+        <p>MBSの報道の際には、不起訴となった2名の外見が判別できる映像も放送された。当該映像はSNS上で拡散し、2名の人物を特定した上での中傷投稿が相次いだ。これに対し、報道直後から、捜査中の事案を断定的かつ人物を特定できる形で報じたことを問題視する声が上がり、加害者とされた2人の人権回復を求める市民らがMBS社屋周辺で抗議活動を行う事態に発展した。この件への対応または回答はMBSから一切なく、この抗議活動は本項執筆時点（2026/07/08）でも継続している<sup><a href="#mbspedia-ref-3">[3]</a></sup>。</p>
+        <p>2026年4月14日発売の週刊SPA!は、2月13日のMBSの傷害事件報道を情報源として、反差別活動を扱った記事を掲載した。記事では、2月13日のMBS報道に基づき、反差別活動家による暴行事件が発生した事例として紹介し、当該報道の内容を前提として論旨を展開した。記事ではその後のMBSが実施した訂正放送に関する情報は加味されておらず、訂正前の報道内容を前提としていた。記事は2026年6月23日にウェブでも配信されたが、配信後に批判が集まり、記事はその後削除された<sup><a href="#mbspedia-ref-9">[9]</a></sup>。</p>
+      </div>
+
+      <div class="mbspedia-chapter">
+        <div class="mbspedia-chapter-header"><h3>記事・議事録の無申告修正</h3></div>
+        <p>報道直後からSNS上では内容に対する批判が相次ぎ、MBSは当該放送の動画を同日午後に削除した。さらに、ウェブ記事については配信日時（タイムスタンプ）を変更しないまま、報道後3日間で計3回にわたり内容の修正が行われた<sup><a href="#mbspedia-ref-4">[4]</a></sup>。</p>
+        <p>MBSは、2月13日の初報以降、抗議を受けて記事内容を修正していたにもかかわらず、配信日時の表示は当初のまま据え置かれ、読者には更新の事実が分からない状態であったことを認めた。MBSは後に、この件を受けてウェブニュースの記事運用を見直すことを公表した。そのうえで、今後は記事の変更・追記を行う際には、更新日時および変更内容が分かるよう表示を改善すると説明した<sup><a href="#mbspedia-ref-2">[2]</a></sup>。</p>
+        <p>2026年4月7日に開催された「第707回MBS番組審議会」の議事録について、公開後の同年4月20日付で内容の追記が行われた。追記されたのは第2項「報告事項」の欄で、「（1）2026年3月19日に実施した放送法第九条第一項の規定による訂正放送について」という項目が追加された。当初公開された議事録には、同年3月19日に実施された今回の誤報に関する訂正放送についての記載はなく、審議内容や報告事項も掲載されていなかった。その後の追記では、訂正放送を実施した事実についての説明が追加されたが、内容は限定的なものにとどまった。また、3月19日の訂正放送において示された「記事や情報を修正する際には、その事実を明示する」という趣旨の運用方針については、この議事録の修正時には適用されず、運用方針との整合性が問われる形となった<sup><a href="#mbspedia-ref-5">[5]</a></sup>。</p>
+      </div>
+
+      <div class="mbspedia-chapter">
+        <div class="mbspedia-chapter-header"><h3>「しばき隊」報道を受けた政治への影響</h3></div>
+        <p>「『しばき隊』名乗るグループから暴行受け肋骨骨折」と報じられた初報を受け、日本維新の会と参政党は、選挙期間中の強い抗議行動を「選挙妨害」として扱うための法整備が必要であるとの主張を展開した<sup><a href="#mbspedia-ref-6">[6]</a></sup><sup><a href="#mbspedia-ref-7">[7]</a></sup>。</p>
+        <p>2026年2月25日、日本維新の会・杉江幹事長の定例会見において、MBSの木村圭佑記者（大阪府市政担当キャップ）が「選挙の間、いわゆる『しばき隊』というか、そういう人たちがかなり出てきている状況なんですが」と水を向ける質問をした。これに対し杉江幹事長は、抗議活動を規制するための法律・ルールの改定を目指す意向を示した<sup><a href="#mbspedia-ref-6">[6]</a></sup>。</p>
+        <p>さらに2月26日には、国会における代表質問において参政党の神谷代表が、「(参政党の)支持者と誤認されて暴行を受ける事案が発生している」と報道された内容をそのまま含める発言をし、これを根拠として取り締まりの強化および関連法制度の整備を求めた<sup><a href="#mbspedia-ref-7">[7]</a></sup>。</p>
+      </div>
+
+      <div class="mbspedia-chapter">
+        <div class="mbspedia-chapter-header"><h3>2026年7月5日放送の「MBSマンスリーレポート」</h3></div>
+        <p>2026年7月5日放送の『MBSマンスリーリポート』では、2026年2月13日に放送した傷害事件報道について検証を行った。番組では、取材・編集の過程で事前に形成された「ストーリー」を優先し、十分な事実確認を行わないまま報道したことが問題の背景にあったと説明された<sup><a href="#mbspedia-ref-8">[8]</a></sup>。</p>
+        <p>当時の報道情報局長であった羽根俊輔は、思い込みに基づくストーリーを優先した結果、確認すべき事実確認が不足した報道体制であったことを認め、謝罪した<sup><a href="#mbspedia-ref-8">[8]</a></sup>。</p>
+        <p>番組に出演した京都大学大学院教授の曽我部真裕は、双方の当事者への取材を行わず、一方の説明を中心に報道したことについて、報道としての拙速さを指摘した。また、3月19日に放送された訂正報道についても、「しばき隊」という集団に焦点を当てた内容となっており、訂正の範囲が限定的であったことや、報道後の対応についても不十分であったと指摘した<sup><a href="#mbspedia-ref-8">[8]</a></sup>。</p>
+        <p>MBS報道情報局は、今回の問題を受けた再発防止策として、①一方の当事者だけではなく双方への取材を原則とすること、②取材や編集が「ストーリーありき」になっていないか確認すること、③視聴者が受ける印象を踏まえたチェックを徹底すること、④客観性や表現の正確性を確保するためのチェックリストを作成・運用することを示した<sup><a href="#mbspedia-ref-8">[8]</a></sup>。</p>
+        <p>また、2026年6月9日には報道情報局員を対象とした勉強会を実施し、双方への取材を行うことの重要性などを改めて確認した。報道情報局長の三澤肇は、今回の問題を教訓として、思い込みを排除した丁寧な取材、複数の担当者による確認、危機管理体制の強化に取り組む考えを示した<sup><a href="#mbspedia-ref-8">[8]</a></sup>。</p>
+      </div>
+
+      <div class="mbspedia-refs">
+        <h4>出典</h4>
+        <ol>
+          <li id="mbspedia-ref-1"><span class="ref-num">[1]</span><span>【魚拓】【独自】橙色の帽子で『参政党支持者』と誤認か…「しばき隊」名乗るグループから暴行受け肋骨骨折　傷害事件として捜査　大阪府警 | MBSニュース — <a href="https://megalodon.jp/2026-0213-1341-16/https://www.mbs.jp:443/news/kansainews/20260213/GE00071480.shtml" target="_blank" rel="noopener">魚拓</a></span></li>
+          <li id="mbspedia-ref-2"><span class="ref-num">[2]</span><span>MBSが報道内容を訂正、謝罪　「しばき隊」名乗った事実なし | 毎日新聞 — <a href="https://mainichi.jp/articles/20260319/k00/00m/040/214000c" target="_blank" rel="noopener">記事リンク</a></span></li>
+          <li id="mbspedia-ref-3"><span class="ref-num">[3]</span><span>「しばき隊」報道巡り、MBSが謝罪　「加害者との印象与えた」 | 毎日新聞 — <a href="https://mainichi.jp/articles/20260326/k00/00m/040/243000c" target="_blank" rel="noopener">記事リンク</a></span></li>
+          <li id="mbspedia-ref-4"><span class="ref-num">[4]</span><span>魚拓リスト — <a href="https://megalodon.jp/?url=https%3A%2F%2Fwww.mbs.jp%3A443%2Fnews%2Fkansainews%2F20260213%2FGE00071480.shtml&all=1" target="_blank" rel="noopener">https://www.mbs.jp:443/news/kansainews/20260213/GE00071480.shtml</a></span></li>
+          <li id="mbspedia-ref-5"><span class="ref-num">[5]</span><span>MBS 番組審議会 記事も議事録も小賢しい改竄を繰り返す — <a href="https://youtu.be/ElGoybus1po?t=771" target="_blank" rel="noopener">動画リンク</a></span></li>
+          <li id="mbspedia-ref-6"><span class="ref-num">[6]</span><span>【LIVE配信】2026年2月25日(水)20時頃～ 杉江友介幹事長 囲み会見 — <a href="https://youtu.be/HwOcF9ahy4g?t=951" target="_blank" rel="noopener">動画リンク</a></span></li>
+          <li id="mbspedia-ref-7"><span class="ref-num">[7]</span><span>【国会中継ライブ】代表質問｜高市総理に参政党・神谷代表、共産党・小池書記局長、れいわ奥田ふみよ共同代表らが質問　参議院・本会議【LIVE】(2026年2月26日) ANN/テレ朝 — <a href="https://youtu.be/0c33IU7K9us?t=4202" target="_blank" rel="noopener">動画リンク</a></span></li>
+          <li id="mbspedia-ref-8"><span class="ref-num">[8]</span><span>2月13日のニュース検証番組（2026年7月5日放送　MBSマンスリーリポートより） — <a href="https://www.youtube.com/watch?v=-Lf0nI7k61c" target="_blank" rel="noopener">動画リンク</a></span></li>
+          <li id="mbspedia-ref-9"><span class="ref-num">[9]</span><span>【魚拓】反差別活動家はなぜ「豹変」するのか。おとなしい青年が半グレまがいに…佐藤優が解説する過激化のメカニズム | 日刊SPA! — <a href="https://megalodon.jp/2026-0623-1218-03/https://nikkan-spa.jp:443/2156514" target="_blank" rel="noopener">魚拓リンク</a></span></li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── 資料セクション ── -->
   <section id="resources">
     <h2 class="section-title">MBS報道問題に関する資料</h2>
     <div class="resource-list">
 
       <div class="resource-card">
-        <p>元MBSアナウンサー子守康範さんによる解説文章。簡潔かつ詳細にまとめられています。</p>
-        <a href="https://note.com/10komori/n/n323d75de18ce" target="_blank" rel="noopener">MBSによるしばき隊暴行事件報道と訂正について｜子守康範</a>
+        <div class="resource-badge">1</div>
+        <div class="resource-content"><p>元MBSアナウンサー子守康範さんによる解説文章。簡潔かつ詳細にまとめられています。</p>
+        <a href="https://note.com/10komori/n/n323d75de18ce" target="_blank" rel="noopener">MBSによるしばき隊暴行事件報道と訂正について｜子守康範</a></div>
       </div>
 
       <div class="resource-card">
-        <p>NoHateTVから切り抜き動画。発生から2週間ほどの間に起こった誤報による影響、反応について語られています。</p>
-        <a href="https://www.youtube.com/watch?v=gVjY0Zm4RYg" target="_blank" rel="noopener">20260219&20260226/NO HATE TV/MBSしばき隊虚報事件&続報</a>
+        <div class="resource-badge">2</div>
+        <div class="resource-content"><p>NoHateTVから切り抜き動画。発生から2週間ほどの間に起こった誤報による影響、反応について語られています。</p>
+        <a href="https://www.youtube.com/watch?v=gVjY0Zm4RYg" target="_blank" rel="noopener">20260219&20260226/NO HATE TV/MBSしばき隊虚報事件&続報</a></div>
       </div>
 
       <div class="resource-card">
-        <p>菅野完さんの切り抜き動画。謝罪・責任を取るということの方法論を解説しています。個人的には今回の問題にあまり興味のない方でも必見の内容だと思います。</p>
-        <a href="https://www.youtube.com/watch?app=desktop&v=HiLfhWRjq-Q&feature=youtu.be" target="_blank" rel="noopener">【菅野完】MBSはもはや存立の危機。放送法を無視した「報道情報局」という異常な部署が"やらせ"を生み出すカラクリ【菅野完 政治解説切り抜き】</a>
+        <div class="resource-badge">3</div>
+        <div class="resource-content"><p>菅野完さんの切り抜き動画。謝罪・責任を取るということの方法論を解説しています。個人的には今回の問題にあまり興味のない方でも必見の内容だと思います。</p>
+        <a href="https://www.youtube.com/watch?app=desktop&v=HiLfhWRjq-Q&feature=youtu.be" target="_blank" rel="noopener">【菅野完】MBSはもはや存立の危機。放送法を無視した「報道情報局」という異常な部署が"やらせ"を生み出すカラクリ【菅野完 政治解説切り抜き】</a></div>
       </div>
 
       <div class="resource-card">
-        <p>MBSへの抗議行動の動画も数多くあるのですが、まずは水谷伸之さんの動画をおすすめします。</p>
-        <a href="https://www.youtube.com/watch?v=pgl538D9gdk" target="_blank" rel="noopener">【MBSしばき隊誤報道】抗議行動スピーチ 2026年3月22日 #難波文男 #子守康範</a>
+        <div class="resource-badge">4</div>
+        <div class="resource-content"><p>MBSへの抗議行動の動画も数多くあるのですが、まずは水谷伸之さんの動画をおすすめします。</p>
+        <a href="https://www.youtube.com/watch?v=pgl538D9gdk" target="_blank" rel="noopener">【MBSしばき隊誤報道】抗議行動スピーチ 2026年3月22日 #難波文男 #子守康範</a></div>
       </div>
 
       <div class="resource-card">
-        <p>実際に流された誤報がどのようなものであったのか、動画は削除されているので見ることは難しいのですが、てんさんのブログ記事の下の方、「消されたTV放送動画…」セクションから静止画で見ることができます。</p>
-        <a href="https://ameblo.jp/et-eo/entry-12958917283.html" target="_blank" rel="noopener">【社長さんよろしく！MBSコンプラ】うそをついたりだましたりしていないか／他人を傷つけていないか | ☆Dancing the Dream ☆</a>
+        <div class="resource-badge">5</div>
+        <div class="resource-content"><p>実際に流された誤報がどのようなものであったのか、動画は削除されているので見ることは難しいのですが、てんさんのブログ記事の下の方、「消されたTV放送動画…」セクションから静止画で見ることができます。</p>
+        <a href="https://ameblo.jp/et-eo/entry-12958917283.html" target="_blank" rel="noopener">【社長さんよろしく！MBSコンプラ】うそをついたりだましたりしていないか／他人を傷つけていないか | ☆Dancing the Dream ☆</a></div>
       </div>
 
       <div class="resource-card">
-        <p>2月13日報道後、MBSによって無申告で行われた記事の修正の履歴が残っています。強い表現から逃げの効く形になっていきます。</p>
-        <a href="https://megalodon.jp/?url=https%3A%2F%2Fwww.mbs.jp%3A443%2Fnews%2Fkansainews%2F20260213%2FGE00071480.shtml&all=1" target="_blank" rel="noopener">魚拓リスト（https://www.mbs.jp:443/news/kansainews/20260213/GE00071480.shtml）</a>
+        <div class="resource-badge">6</div>
+        <div class="resource-content"><p>2月13日報道後、MBSによって無申告で行われた記事の修正の履歴が残っています。強い表現から逃げの効く形になっていきます。</p>
+        <a href="https://megalodon.jp/?url=https%3A%2F%2Fwww.mbs.jp%3A443%2Fnews%2Fkansainews%2F20260213%2FGE00071480.shtml&all=1" target="_blank" rel="noopener">魚拓リスト（https://www.mbs.jp:443/news/kansainews/20260213/GE00071480.shtml）</a></div>
       </div>
 
       <div class="resource-card">
-        <p>3月19日、1度目の訂正報道の内容です。てんさんのブログから。</p>
-        <a href="https://ameblo.jp/et-eo/entry-12960235966.html" target="_blank" rel="noopener">【MBS誤報 訂正お詫びしたフリ】⚠️誤報に誤報を重ね人権侵害を深めるMBS | ☆Dancing the Dream ☆</a>
+        <div class="resource-badge">7</div>
+        <div class="resource-content"><p>3月19日、1度目の訂正報道の内容です。てんさんのブログから。</p>
+        <a href="https://ameblo.jp/et-eo/entry-12960235966.html" target="_blank" rel="noopener">【MBS誤報 訂正お詫びしたフリ】⚠️誤報に誤報を重ね人権侵害を深めるMBS | ☆Dancing the Dream ☆</a></div>
       </div>
 
       <div class="resource-card">
-        <p>3月26日、2度目の訂正内容の報道です。てんさんのブログから。</p>
-        <a href="https://ameblo.jp/et-eo/entry-12961038966.html" target="_blank" rel="noopener">【MBS人権侵害誤報：２度目の訂正お詫び】大阪地検2人を不起訴…当たり前！報道被害者に謝罪なし | ☆Dancing the Dream ☆</a>
+        <div class="resource-badge">8</div>
+        <div class="resource-content"><p>3月26日、2度目の訂正内容の報道です。てんさんのブログから。</p>
+        <a href="https://ameblo.jp/et-eo/entry-12961038966.html" target="_blank" rel="noopener">【MBS人権侵害誤報：２度目の訂正お詫び】大阪地検2人を不起訴…当たり前！報道被害者に謝罪なし | ☆Dancing the Dream ☆</a></div>
       </div>
 
     </div>
